@@ -85,7 +85,11 @@ Exceed: >2 ADR
 
 }
 
-![Architectural Decision Record Template](./decisions/decision-template.madr)
+[//]: # (![Architectural Decision Record Template]&#40;./decisions/decision-template.madr&#41;)
+![](./decisions/decision1.madr)
+![](./decisions/decision2.madr)
+![](./decisions/decision3.madr)
+
 
 # Ex - Quality Attribute Scenario
 

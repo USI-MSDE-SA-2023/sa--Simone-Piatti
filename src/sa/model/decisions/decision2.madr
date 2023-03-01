@@ -1,0 +1,39 @@
+## ADR #02: Possibility to export the stocks to a CSV file
+
+1. What did you decide?
+
+The user has the ability to export the stocks to a CSV file.
+
+2. What was the context for your decision?
+
+Some user may want to do some analysis on the stocks they have. In order to do that, they need to export the stocks to a file that can be read by other programs.
+For example, a user may want to export the stocks to a spreadsheet program to do some analysis on the stocks or to check if the stocks are correct with the one he has in real life.
+
+3. What is the problem you are trying to solve?
+
+The user may already have some programs that can read the data from a file and do some analysis on the stocks.
+
+4.  Which alternative options did you consider?
+
+* The user can export the stocks to a CSV file.
+* The user can export the stocks to a JSON file.
+* The user can export the stocks to a XML file.
+* The user can export the stocks to a PDF file.
+
+5. Which one did you choose?
+The first one: The user can export the stocks to a CSV file.
+
+6. What is the main reason for that?
+
+The main reason is that the CSV file is the most common file format for spreadsheets and for data analysis and it is the most common file format that can be read by other programs.
+
+
+List the positive consequences (pros) of your decision:
+
+* The user can export the stocks to a CSV file and do their own analysis on the stocks without needing to use this program.
+* This program still simple and easy to use since it doesn't have to do any analysis on the stocks.
+
+If any, list the negative consequences (cons)
+
+* The user may not be able to do some analysis on the stocks because the CSV file doesn't have all the information that the user may need.
+* The user may not have a program that can read the CSV file and do the analysis that the user wants to do.
