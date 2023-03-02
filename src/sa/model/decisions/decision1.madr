@@ -1,22 +1,28 @@
 ## ADR #01: The server machine also is the database one
 
 1. What did you decide?
+
 The machine that runs the server also runs the database.
 
 2. What was the context for your decision?
+
 To improve the stability and the performance of the system, I need to decided where to run the database and the server with thinking about the budget that a final user can have.
 
 3. What is the problem you are trying to solve?
+
 The system must have very good performance and stability, and the budget of the final user is limited.
 
 4.  Which alternative options did you consider?
+
 * Run the database and the server in two different machine.
 * Run the database in the same machine that runs the server.
 
 5. Which one did you choose?
+
 The second one: Run the database in the same machine that runs the server.
 
 6. What is the main reason for that?
+
 The main reason is that the server machine is a very powerful machine, and the database is not a very heavy database, so the performance and the stability of the system will be better if the database runs in the same machine that runs the server.
 
 List the positive consequences (pros) of your decision:

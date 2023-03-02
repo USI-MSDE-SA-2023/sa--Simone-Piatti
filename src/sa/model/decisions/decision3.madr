@@ -1,22 +1,28 @@
 ## ADR #03: Multiple barcode foreach product
 
 1. What did you decide?
+
 Each product can has multiple barcodes with different types (EAN, UPC, etc.) and each barcode correspond to a precise amount of that product. For example, a product can have 2 barcodes, one with 1 unit and another with 10 units.
 
 2. What was the context for your decision?
+
 Some product can be stored in different ways, for example, a product can be stored in a box of 10 units or in a box of 100 units. In this case, the product will have 3 barcodes, one with 1 unit, one with 10 units and another one with 100 units but, since the are different amounts of the same product the need to be stored as one product.
 
 3. What is the problem you are trying to solve?
+
 The user must be able to store the same product in different way and the system must know how many units of that product are in the inventory.
 
 4.  Which alternative options did you consider?
+
 * Each product can has only one barcode that correspond to 1 unit of the product.
 * Each product can has multiple barcodes with different types (EAN, UPC, etc.) and each barcode correspond to a precise amount of that product.
 
 5. Which one did you choose?
+
 The second option: Each product can has multiple barcodes with different types (EAN, UPC, etc.) and each barcode correspond to a precise amount of that product.
 
 6. What is the main reason for that?
+
 The user must be able to store the same product in different way and it is necessary to know how many units of that product are in the inventory.
 
 List the positive consequences (pros) of your decision:
