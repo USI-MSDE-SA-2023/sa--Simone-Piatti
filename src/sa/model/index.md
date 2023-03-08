@@ -136,11 +136,11 @@ Exceed: >6 scenarios using challenging qualities
 
 }
 
-## Example Scenario
+## First Scenario
 
 Quality: _Recoverability_
 
-Scenario: In case of power failure, rebooting the system should take up to 20 seconds.
+Scenario: In case of power failure, rebooting the system should take up to 30 seconds.
 
 ```puml
 @startuml
@@ -152,11 +152,177 @@ skinparam shadowing false
 rectangle "After Power has been restored" {
 
 rectangle "Admin" as Source
-rectangle "max 20s" as Measure
+rectangle "max 30s" as Measure
 
 Source -> [System] : "Boot"
 
 [System] -> [Measure] : "Online"
+
+}
+
+@enduml
+```
+
+## Second Scenario
+
+Quality: _Performance_
+
+Scenario: In case the user read a barcode, the system should update the stock of the product in less than 1 second.
+
+```puml
+@startuml
+
+skinparam componentStyle rectangle
+skinparam monochrome true
+skinparam shadowing false
+
+rectangle "After a user read a barcode"{
+
+rectangle "User" as Source
+rectangle "max 1s" as Measure
+
+Source -> [System] : "Read barcode"
+
+[System] -> [Measure] : "Update stock"
+
+}
+
+@enduml
+```
+
+## Third Scenario
+
+Quality: _Scalability_
+
+Scenario: In case a new client try to connect to the system, the system should accept the connection in less than half a second
+
+```puml
+@startuml
+
+skinparam componentStyle rectangle
+skinparam monochrome true
+skinparam shadowing false
+
+rectangle "When a new client try to connect" {
+
+rectangle "Client" as Source
+rectangle "max 0.5s" as Measure
+
+Source -> [System] : "Request connection"
+
+[System] -> [Measure] : "Connected"
+
+}
+
+@enduml
+```
+
+## Fourth Scenario
+
+Quality: _Usability_
+
+Scenario: In case the user want to delete an operation to minimize the impact of errors, the system should delete the operation in less than 2 seconds.
+
+```puml
+@startuml
+
+skinparam componentStyle rectangle
+skinparam monochrome true
+skinparam shadowing false
+
+rectangle "After a user want to delete an operation to minimize the impact of errors"{
+
+rectangle "User" as Source
+rectangle "max 2s" as Measure
+
+Source -> [System] : "Delete operation \n to minimize the impact of errors"
+
+[System] -> [Measure] : "Operation deleted"
+
+}
+
+@enduml
+```
+
+## Fifth Scenario
+
+Quality: _Performance_
+
+Scenario: In case the user want to update the information of a product, the system should update the information in less than 2 seconds.
+
+```puml
+@startuml
+
+skinparam componentStyle rectangle
+skinparam monochrome true
+skinparam shadowing false
+
+rectangle "After a user update the information of a product"{
+
+rectangle "User" as Source
+rectangle "max 2s" as Measure
+
+Source -> [System] : "Update information"
+
+[System] -> [Measure] : "Information updated"
+
+}
+
+@enduml
+```
+
+## Sixth Scenario
+
+Quality: _Testability_
+
+Scenario: Each code unit should have the 80% of code coverage during the development phase.
+
+```puml 
+
+```puml
+@startuml
+
+skinparam componentStyle rectangle
+skinparam monochrome true
+skinparam shadowing false
+
+rectangle "When a developer want to change the UI" {
+
+rectangle "Unit tester" as Source
+rectangle "80% of code coverage" as Measure
+
+Source -> [Code unit] : "Code unit completed"
+
+[Code unit] -> [Measure] : "Result captured"
+
+}
+
+@enduml
+```
+
+## Seventh Scenario
+
+Quality: _Modifiability_
+
+Scenario: In case the developer, at design time, want to change the UI, the developer should be able to do it in less than 3 hours with no side effect.
+
+```puml 
+
+```puml
+@startuml
+
+skinparam componentStyle rectangle
+skinparam monochrome true
+skinparam shadowing false
+
+rectangle "When a developer want to change the UI" {
+
+rectangle "Developer" as Source
+rectangle "max 3 hours" as Measure
+
+Source -> [Code] : "Want to change UI"
+
+[Code] -> [Measure] : "UI changed without side effect"
 
 }
 
