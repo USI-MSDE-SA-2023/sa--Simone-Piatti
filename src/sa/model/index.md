@@ -90,7 +90,6 @@ Exceed: >2 ADR
 ![](./decisions/decision2.madr)
 ![](./decisions/decision3.madr)
 
-
 # Ex - Quality Attribute Scenario
 
 {.instructions
@@ -194,7 +193,8 @@ Source -> [System] : "Read barcode"
 
 Quality: _Scalability_
 
-Scenario: In case a new client try to connect to the system, the system should accept the connection in less than half a second
+Scenario: In case a new client try to connect to the system, the system should accept the connection in less than half a
+second
 
 ```puml
 @startuml
@@ -221,7 +221,8 @@ Source -> [System] : "Request connection"
 
 Quality: _Usability_
 
-Scenario: In case the user want to delete an operation to minimize the impact of errors, the system should delete the operation in less than 2 seconds.
+Scenario: In case the user want to delete an operation to minimize the impact of errors, the system should delete the
+operation in less than 2 seconds.
 
 ```puml
 @startuml
@@ -248,7 +249,8 @@ Source -> [System] : "Delete operation \n to minimize the impact of errors"
 
 Quality: _Performance_
 
-Scenario: In case the user want to update the information of a product, the system should update the information in less than 2 seconds.
+Scenario: In case the user want to update the information of a product, the system should update the information in less
+than 2 seconds.
 
 ```puml
 @startuml
@@ -304,7 +306,8 @@ Source -> [Code unit] : "Code unit completed"
 
 Quality: _Modifiability_
 
-Scenario: In case the developer, at design time, want to change the UI, the developer should be able to do it in less than 3 hours with no side effect.
+Scenario: In case the developer, at design time, want to change the UI, the developer should be able to do it in less
+than 3 hours with no side effect.
 
 ```puml 
 
@@ -352,6 +355,29 @@ Exceed: >2 trade-offs
 Developing an app natively for each OS is expensive and time consuming, but it benefits from a good performance.
 Choosing a cross-platform environment on the other hand simplify the development process, making it faster and cheaper,
 but it might suffer in performance.
+
+## Simplicity vs. Compatibility
+
+Developing a system that is simple to use and understand is a good thing as developing an system that can be integrated
+with various other products.
+But when we want to make our system simple to use and understand but also compatible with various other products the
+chances that the product becomes complex to use and the architecture of the product becomes complex are very high.
+That also makes the system even more difficult to develop and maintain.
+
+## Performance vs. Modifiability
+
+To develop a system that is fast and efficient we probably need to use some code tricks, optimizations and rely on
+execution side effect to make the system faster.
+This approach can make the code more complex and difficult to understand and even small changes can have a big impact on
+the system performance and make the system slower.
+On the other hand, if we want to make the system easy to understand and modify we probably need to reduce the use of
+code tricks and optimizations and don't rely on execution side effects.
+
+## Usability vs. Portability
+
+Developing a system that is easy to use and understand might rely on some specific features of a specific OS or
+hardware, but it will increase the modification need to make the system runs on different OSs with minimal modification.
+Different platforms and OSs impose different constraints and offer variable usability characteristics.
 
 # Ex - Feature Modeling
 
