@@ -217,6 +217,12 @@ Source -> [System] : "Request connection"
 @enduml
 ```
 
+{.feedback
+
+Why Scalability and not Performance?
+
+}
+
 ## Fourth Scenario
 
 Quality: _Usability_
@@ -244,6 +250,14 @@ Source -> [System] : "Delete operation \n to minimize the impact of errors"
 
 @enduml
 ```
+
+{.feedback
+
+Why Usability and not Performance?
+
+Undo is a great usability feature to recover from mistakes. The 2 second constraint however makes the scenario also relevant for performance.
+
+}
 
 ## Fifth Scenario
 
@@ -273,6 +287,15 @@ Source -> [System] : "Update information"
 @enduml
 ```
 
+{.feedback
+
+Overlap between environment and source/stimulus.
+
+Also, performance was already modeled before in the first scenario.
+
+}
+
+
 ## Sixth Scenario
 
 Quality: _Testability_
@@ -301,6 +324,15 @@ Source -> [Code unit] : "Code unit completed"
 
 @enduml
 ```
+
+{.feedback
+
+Environment inconsistent with the scenario text (copy paste?)
+
+Stimulus could be clarified with "test" or "run test" or "check"
+
+}
+
 
 ## Seventh Scenario
 
