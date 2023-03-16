@@ -300,7 +300,7 @@ Also, performance was already modeled before in the first scenario.
 
 Quality: _Testability_
 
-Scenario: Each code unit should have the 80% of code coverage during the development phase.
+Scenario: Each code unit should have at least 80% of code coverage during the development phase.
 
 ```puml 
 
@@ -311,10 +311,10 @@ skinparam componentStyle rectangle
 skinparam monochrome true
 skinparam shadowing false
 
-rectangle "When a developer want to change the UI" {
+rectangle "When a developer complete a code unit testing" {
 
 rectangle "Unit tester" as Source
-rectangle "80% of code coverage" as Measure
+rectangle " >= 80% of code coverage" as Measure
 
 Source -> [Code unit] : "Code unit completed"
 
