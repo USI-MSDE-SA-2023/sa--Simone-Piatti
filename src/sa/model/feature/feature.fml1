@@ -1,0 +1,68 @@
+feature root "Warehouse management system"
+
+feature auth "Authentication"
+    feature account "Account needed"
+    feature noAccount "No account needed"
+
+feature access "Accessibility"
+    feature outside "Accessible from everywhere"
+    feature inside "Accessible only from the same network"
+
+feature storage "Storage"
+    feature db "Database"
+    feature files "Local storage"
+
+feature operation "Operation"
+    feature add "Load an amount of a product"
+        feature addName "Load by name"
+        feature addBarcode "Load by barcode"
+    feature remove "Unload an amount of a product"
+        feature removeName "Unload by name"
+        feature removeBarcode "Unload by barcode"
+
+feature manage "Manage the stock"
+    feature see "See the stock"
+        feature filter "Filter the stock"
+            feature filterName "Filter by name"
+            feature filterBarcode "Filter by barcode"
+        feature sort "Sort the stock"
+            feature sortName "Sort by name"
+            feature sortBarcode "Sort by barcode"
+    feature export "Export the stock"
+        feature exportCSV "Export as CSV"
+        feature exportJSON "Export as JSON"
+        feature exportXML "Export as XML"
+
+
+
+
+root has auth
+    auth hasOneOf [account, noAccount]
+
+root has access
+    access hasOneOf [outside, inside]
+
+root has storage
+    storage hasOneOf [db, files]
+
+root has operation
+    operation has add
+        add hasSome [addName, addBarcode]
+    operation has remove
+        remove hasSome [removeName, removeBarcode]
+
+root has manage
+    manage has see
+        see canHave filter
+            filter hasSome [filterName, filterBarcode]
+        see has sort
+            sort hasSome [sortName, sortBarcode]
+    manage has export
+        export hasOneOf [exportCSV, exportJSON, exportXML]
+
+
+
+
+
+outside requires account
+noAccount requires inside

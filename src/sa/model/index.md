@@ -434,6 +434,8 @@ competitor
 
 }
 
+![Feature Model Diagram (Using flat syntax (.fml1))](./feature/feature.fml1)
+
 # Ex - Context Diagram
 
 {.instructions
