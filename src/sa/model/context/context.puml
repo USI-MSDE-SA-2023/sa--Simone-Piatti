@@ -1,0 +1,25 @@
+@startuml
+!include <C4/C4_Container>
+
+Person(user_1, "User", "Check products amount on shelves")
+Person(user_2, "User", "Want to see product information")
+
+System_Boundary(boundary, "Warehouse management system") {
+
+}
+
+System_Ext(Pdb, "Products database")
+System_Ext(Bdb, "Barcodes database")
+
+Rel(user_1, boundary, "Insert barcode")
+Rel(boundary, user_1, "Return product amount")
+
+Rel(user_2, boundary, "Insert product name")
+Rel(boundary, user_2, "Return product information")
+
+Rel(boundary, Bdb, "Query", "For product id based on barcode")
+Rel(Bdb, boundary, "Respond", "With corresponding product id")
+
+Rel(boundary, Pdb, "Query", "For product based on id or name")
+Rel(Pdb, boundary, "Respond", "With corresponding product")
+@enduml

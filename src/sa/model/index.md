@@ -456,6 +456,8 @@ Exceed: >1 User and >1 Dependency, with both incoming and outgoing dependencies
 
 }
 
+![Context Diagram](./context/context.puml)
+
 # Ex - Component Model: Top-Down
 
 {.instructions
