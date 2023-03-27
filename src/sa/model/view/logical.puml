@@ -1,0 +1,51 @@
+@startuml
+skinparam componentStyle rectangle
+
+!include <tupadr3/font-awesome/database>
+
+title Logical View
+
+[html5-qrcode <external>] as QR
+interface " " as QRI
+QR - QRI
+
+component Database {
+   component [Product DB  <$database{scale=0.33}>] as PDB
+   component [Barcode DB  <$database{scale=0.33}>] as BDB
+   BDB -(0- PDB
+}
+interface " " as PDBI
+PDB - PDBI
+interface " " as BDBI
+BDB -- BDBI
+
+
+[Desktop web interface] as DWI
+[Mobile web interface] as MWI
+[Operation handler] as OH
+interface " " as OHI
+OH -- OHI
+
+[Express Server] as ES
+interface " " as ESI
+ES -- ESI
+
+'QRI )- OH
+PDBI )- OH
+BDBI )-- OH
+
+ES -( OHI
+
+'DWI -( ESI
+ESI )- DWI
+
+MWI -( ESI
+QRI )- MWI
+
+
+
+
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Courier
+@enduml

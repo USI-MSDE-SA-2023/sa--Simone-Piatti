@@ -1,0 +1,34 @@
+@startuml
+title Process View
+
+participant "html5-qrcode <external>" as QR
+participant "Mobile Web interface" as MWI
+participant "Desktop Web interface" as DWI
+participant "Express server" as ES
+participant "Operation handler" as OH
+participant "Barcode database" as BDB
+participant "Product database " as PDB
+
+
+
+
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Courier
+
+DWI -> DWI: Read the product name
+DWI -> ES: POST request with the product name
+ES -> OH: Send product name
+OH -> PDB: Query for product information based on product name
+PDB -> OH: Return the product information if founded
+OH -> ES: Return the product information
+ES -> DWI: Return the product information
+DWI -> DWI: Display and update the product information
+DWI -> ES: POST request with the product name and the update information
+ES -> OH: Send product name and the update information
+OH -> PDB: Update information of the product
+PDB -> OH: Return the result of the operation
+OH -> ES: Return the updated information of the product
+ES -> DWI: Return the updated information of the product
+
+@enduml

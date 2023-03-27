@@ -17,9 +17,7 @@ Rel(boundary, user_1, "Return product amount")
 Rel(user_2, boundary, "Insert product name")
 Rel(boundary, user_2, "Return product information")
 
-Rel(boundary, Bdb, "Query", "For product id based on barcode")
-Rel(Bdb, boundary, "Respond", "With corresponding product id")
+Rel(boundary, Bdb, "Import/Export", "Product id based on barcode")
 
-Rel(boundary, Pdb, "Query", "For product based on id or name")
-Rel(Pdb, boundary, "Respond", "With corresponding product")
+Rel(boundary, Pdb, "Import/Export", "Product information based on id or name")
 @enduml

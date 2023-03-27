@@ -570,9 +570,24 @@ Exceed: >6 components (>1 decomposed) and >2 use case/process view
 
 ## Logical View
 
+![Logical View](./view/logical.puml)
+
 ## Process Views
 
-Use Case:
+### Use Case #1:
+A user use the phone camera to scan a barcode and load/unload the corresponding product.
+
+![Process View: Use phone camera to scan barcode and load/unload the corresponding product](./view/process_1.puml)
+
+### Use Case #2: 
+A user use the desktop web application to scan a barcode and see the corresponding product information.
+
+![Process View:  Use a barcode to see the corresponding product information](./view/process_2.puml)
+
+### Use Case #3: 
+A user use the desktop web application to update the product information from the name of the product.
+
+![Process View: Update product information from its name](./view/process_3.puml)
 
 # Ex - Component Model: Bottom-Up
 
