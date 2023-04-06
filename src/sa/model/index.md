@@ -611,6 +611,20 @@ Exceed: Redesign based on >3 reused components (1 Logical View, >1 Process View,
 
 }
 
+## Logical View
+
+![Logical View](./view/logical.puml)
+
+## Process View
+### Use Case:
+Two user are connected to the system one using the desktop web interface and the other using the mobile application.
+The user using the desktop web application use use a barcode to load/unload the corresponding product. 
+The user using the mobile application need to see the list of the done operations updated automatically when a new operation is done.
+![Process View: Use phone camera to scan barcode and load/unload the corresponding product](./view/process_4.puml)
+
+### ADR
+![](./decisions/decision4.madr)
+
 # Ex - Interface/API Specification
 
 {.instructions

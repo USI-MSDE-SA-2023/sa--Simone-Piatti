@@ -1,0 +1,34 @@
+@startuml
+title Process View
+
+participant "html5-qrcode <external>" as QR
+participant "Mobile Web interface" as MWI
+participant "Desktop Web interface" as DWI
+participant "Express server" as ES
+participant "Operation handler" as OH
+participant "Barcode database" as BDB
+participant "Product database " as PDB
+
+
+
+
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Courier
+
+DWI -> DWI: Read the barcode
+DWI -> ES: POST request with barcode and information of the operation
+ES -> OH: Send barcode and option of the operation
+OH -> BDB: Query for product ID based on barcode
+BDB -> OH: Return the product ID if founded
+OH -> PDB: Query for product information based on product ID
+PDB -> OH: Return the product information if founded
+OH -> PDB: Update quantity of the product
+PDB -> OH: Return the result of the operation
+OH -> ES: Return the product information with the updated quantity
+ES -> DWI: Return the updated information of the product
+ES -> OH: GET request for the list of done operations
+OH -> ES: Return the list of done operations
+ES -> MWI: Send the updated list of done operations
+
+@enduml
