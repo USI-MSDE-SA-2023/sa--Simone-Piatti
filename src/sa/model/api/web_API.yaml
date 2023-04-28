@@ -1,0 +1,238 @@
+# Write your OpenAPI description here
+# The tree model will be automatically generated
+
+openapi: "3.0.2"
+info:
+  title: Warehouse management system
+  version: "1.0"
+  description: System for shops with a local warehouse that need to manage the stock of their products.
+paths:
+  /item:
+    get:
+      summary: Retrieve the list of items
+      description: Render the Items.ejs view with all the items in the database
+      responses:
+        200:
+          description: OK
+  /item/newItem:
+    get:
+      summary: Retrieve the form to create a new item
+      description: Render the NewItem.ejs view with all the field to create a new item
+      responses:
+        200:
+          description: OK
+  /item/info/{itemId}:
+    get:
+      summary: Retrieve all the data of the specified item
+      description: Render the ItemInfo.ejs view with the data of the item with the given ID if no ID is given render the ItemInfo.ejs view with the data of the first item in the database
+      parameters:
+        - name: itemId
+          in: path
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+    post:
+      summary: Update the information of the specified item
+      description: Update the information of the item with the given ID and render the ItemInfo.ejs view with the updated data of the corresponding item
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name:
+                  type: string
+                Description:
+                  type: string
+                MinThr:
+                  type: string
+                Position:
+                  type: string
+                ItemWeight:
+                  type: string
+                Quantity:
+                  type: string
+                OldCode_id:
+                  type: string
+                OldMultiplier_id:
+                  type: string
+                Code_N:
+                  type: string
+                Multiplier_N:
+                  type: string
+              required:
+                - Name
+                - Description
+                - MinThr
+                - Position
+                - ItemWeight
+                - Quantity
+      responses:
+        200:
+          description: OK
+  /item/add:
+    post:
+      summary: Create a new item
+      description: Create a new item with the given data and save it to the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name:
+                  type: string
+                Description:
+                  type: string
+                MinThr:
+                  type: string
+                Position:
+                  type: string
+                ItemWeight:
+                  type: string
+                Code_N:
+                  type: string
+                Multiplier_N:
+                  type: string
+              required:
+                - Name
+                - ItemWeight
+      responses:
+        200:
+          description: OK
+  /item/code/{codeId}:
+    delete:
+      summary: Delete the given code
+      description: Delete the code with the given id
+      parameters:
+        - name: codeId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+  /movement:
+    get:
+      summary: Retrieve the form to make operation in the warehouse
+      description: Render the Movement.ejs view
+      responses:
+        200:
+          description: OK
+    post:
+      summary: Save the operation
+      description: Saves the done operation and render the Movement.ejs view with the updated data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name:
+                  type: string
+                Code:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                    - "Unload"
+                    - "Load"
+                    - "Check"
+              required:
+                - type
+      responses:
+        200:
+          description: OK
+        404:
+          description: Data or type of operation not found
+          content:
+            text/html:
+              schema:
+                type: string
+              examples:
+                codeNotFound:
+                  value: "Item with code {code} not found"
+                nameNotFound:
+                    value: "Item with name {name} not found"
+                noData:
+                    value: "No data for the operation"
+                operationNotRecognized:
+                    value: "Operation not recognized"
+  /movement/history:
+    get:
+      summary: Retrieve the list of transactions
+      description: Render the Transactions.ejs view with the transactions of the selected item and in the selected date range present in the database
+      parameters:
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: operation
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+  /movement/history/{itemId}:
+    get:
+      summary: Retrieve the list of transactions of the selected item
+      description: Render the Transactions.ejs view with the transactions of the selected item, of the selected type and in the selected date range present in the database
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: operation
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+  /movement/history/{transactionId}:
+    delete:
+      summary: Delete the given transaction
+      description: Delete the given transaction and restore the quantity of the item to the previous value
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+  

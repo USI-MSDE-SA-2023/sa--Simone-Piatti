@@ -1,0 +1,137 @@
+@startuml
+
+title Logical View
+
+[html5-qrcode <external>] as QR
+interface " " as QRI
+QR - QRI
+
+component Database {
+   component [Product DB  <$database{scale=0.33}>] as PDB
+   component [Barcode DB  <$database{scale=0.33}>] as BDB
+   BDB -(0- PDB
+}
+interface " " as PDBI
+PDB - PDBI
+interface " " as BDBI
+BDB -- BDBI
+
+
+[Desktop web interface] as DWI
+[Mobile web interface] as MWI
+[Operation handler] as OH
+interface " " as OHI
+OH -- OHI
+
+[Express Server] as ES
+interface " " as ESI
+ES -- ESI
+
+PDBI )- OH
+BDBI )-- OH
+
+ES -( OHI
+
+ESI )- DWI
+
+MWI -( ESI
+QRI )- MWI
+
+
+note bottom of QRI
+operations:
+..
+start(camera, config, callback)
+stop()
+end note
+
+note bottom of ESI
+operations:
+..
+POST(...)
+GET(...)
+DELETE(...)
+--
+events:
+..
+started
+disconnected
+update_transaction
+item_updated
+new_item
+end note
+
+note right of OHI
+operations:
+..
+load(code)
+load(itemName)
+unload(code)
+unload(itemName)
+getInfo(itemId)
+delete(codeId)
+delete(itemId)
+addItem(Name, Position, Description, MinThr, Quantity, Weight)
+updateItem(itemId, Name, Position, Description, MinThr, Quantity, Weight)
+end note
+
+note left of PDBI
+operations:
+..
+insertOne()
+find()
+findOne()
+findOneAndUpdate()
+--
+properties:
+..
+itemId
+Name
+Position
+Description
+MinThr
+Quantity
+Weight
+
+end note
+
+note right of BDBI
+operations:
+..
+insertMany()
+deleteOne()
+find()
+--
+properties:
+..
+codeId
+code
+multiplier
+itemId
+end note
+
+
+'note left of iPrinter
+'operation:
+'..
+'print(id)
+'
+'--
+'events:
+'..
+'print_started
+'print_done
+'
+'--
+'properties:
+'..
+'paper_size
+'color
+'duplex
+'end note
+
+
+
+skinparam monochrome true
+skinparam shadowing false
+@enduml

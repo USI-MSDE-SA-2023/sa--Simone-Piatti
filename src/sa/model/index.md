@@ -625,7 +625,8 @@ The user using the mobile application need to see the list of the done operation
 ### ADR
 ![](./decisions/decision4.madr)
 
-# Ex - Interface/API Specification
+
+# Ex - Interface/API Specification 
 
 {.instructions
 
@@ -659,6 +660,9 @@ the [OpenAPI-to-Tree](http://api-ace.inf.usi.ch/openapi-to-tree/) tool to visual
 description.
 
 }
+
+![Shared Interfaces](./view/logical_with_interfaces.puml)\
+![Web API](./api/web_API.png)
 
 # Ex - Connector View
 
