@@ -7,14 +7,18 @@ interface " " as QRI
 QR - QRI
 
 component Database {
-   component [Product DB  <$database{scale=0.33}>] as PDB
+   component [Item DB  <$database{scale=0.33}>] as PDB
    component [Barcode DB  <$database{scale=0.33}>] as BDB
+   component [Transaction DB  <$database{scale=0.33}>] as TDB
    BDB -(0- PDB
+   TDB -(0- PDB
 }
 interface " " as PDBI
 PDB - PDBI
 interface " " as BDBI
 BDB -- BDBI
+interface " " as TDBI
+TDB -- TDBI
 
 
 [Desktop web interface] as DWI
@@ -29,6 +33,7 @@ ES -- ESI
 
 PDBI )- OH
 BDBI )-- OH
+TDBI )-- OH
 
 ES -( OHI
 
@@ -95,7 +100,7 @@ Weight
 
 end note
 
-note right of BDBI
+note left of BDBI
 operations:
 ..
 insertMany()
@@ -110,25 +115,23 @@ multiplier
 itemId
 end note
 
+note left of TDBI
+operations:
+..
+insertOne()
+find()
+findOne()
+deleteOne()
+--
+properties:
+..
+itemId
+Quantity
+Weight
+Operation
+Date
 
-'note left of iPrinter
-'operation:
-'..
-'print(id)
-'
-'--
-'events:
-'..
-'print_started
-'print_done
-'
-'--
-'properties:
-'..
-'paper_size
-'color
-'duplex
-'end note
+end note
 
 
 
