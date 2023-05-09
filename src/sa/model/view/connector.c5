@@ -1,0 +1,7 @@
+Item DB -> db DB -> Operation handler
+Database DB -> db DB -> Operation handler
+Transaction DB -> db DB -> Operation handler
+Operation handler <-call- Express server
+Express server <- web HTTP/HTTPS <- Desktop web interface
+Express server <- web HTTP/HTTPS <- Mobile web interface
+Mobile web interface <- ram Shared memory <- html5 qrcode

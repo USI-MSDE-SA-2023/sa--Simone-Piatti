@@ -88,7 +88,7 @@ find()
 findOne()
 findOneAndUpdate()
 --
-properties:
+data schema:
 ..
 itemId
 Name
@@ -107,7 +107,7 @@ insertMany()
 deleteOne()
 find()
 --
-properties:
+data schema:
 ..
 codeId
 code
@@ -123,7 +123,7 @@ find()
 findOne()
 deleteOne()
 --
-properties:
+data schema:
 ..
 itemId
 Quantity

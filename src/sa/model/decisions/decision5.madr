@@ -1,0 +1,21 @@
+## ADR: The three database need to connect to the operation handler
+
+1. What did you decide?
+The three database, the one for the items, the one for the codes and the one for the transactions, must use the same connection to the operation handler.
+
+2. What was the context for your decision?
+The operation handler need to access the three databases to perform the operations.
+
+3. What is the problem you are trying to solve?
+The problem is to connect the three databases to the operation handler in a fast, stable and secure way.
+
+4.  Which alternative options did you consider?
+The alternatives are:
+- Connect the three databases to the operation handler using a single connection
+- Connect the three databases to the operation handler using three different connections
+
+5. Which one did you choose?
+I choose to connect the three databases to the operation handler using a single connection.
+
+6. What is the main reason for that?
+The main reason is that the operation handler need to access the three databases in different moments to perform the operations and one connection is faster and more safe than three different connections.

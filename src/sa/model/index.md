@@ -662,7 +662,7 @@ description.
 }
 
 ![Shared Interfaces](./view/logical_with_interfaces.puml)\
-![Web API](./api/web_API.png)
+![Web API ](./api/web_API.png)
 
 # Ex - Connector View
 
@@ -685,6 +685,10 @@ Exceed: introduce a new type of connector and update your existing process view
 (sequence diagram) to show the connector primitives in action
 
 }
+
+![Connector View Diagram](./view/connector.c5)
+![ADR](./decisions/decision5.madr)
+
 
 # Ex - Adapters and Coupling
 
