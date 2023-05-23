@@ -21,26 +21,29 @@ node "Desktop" {
 node "Local Server" {
  [Express Server] as ES
  [Operation handler] as OH
+}
 
+cloud "Cloud" {
  database "Database" {
    component [Product DB  <$database{scale=0.33}>] as PDB
    component [Transaction DB  <$database{scale=0.33}>] as TDB
    component [Barcode DB  <$database{scale=0.33}>] as BDB
 
-
-   }
+   BDB -right- PDB
+   TDB -left- PDB
+}
 }
 
-BDB - PDB
-TDB - PDB
 
-OH - PDB : SQL
-OH - TDB : SQL
-OH - BDB : SQL
+
+
+OH -up- PDB
+OH -up- TDB
+OH -up- BDB
 
 ES - OH
-ES - MWI : HTTP/HTTPS
-ES - DWI : HTTP/HTTPS
+ES -down- MWI : HTTP/HTTPS
+ES -down- DWI : HTTP/HTTPS
 
 MWI - QR
 
