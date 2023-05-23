@@ -11,7 +11,7 @@ jobs:
 
       - name: Install and Build 🔧 
         run: |
-          sudo apt install plantuml
+          sudo apt install graphviz
           yarn install
           yarn build
 
