@@ -11,6 +11,7 @@ jobs:
 
       - name: Install and Build 🔧 
         run: |
+          brew install plantuml
           yarn install
           yarn build
 
