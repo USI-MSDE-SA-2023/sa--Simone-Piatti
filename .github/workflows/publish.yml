@@ -11,9 +11,10 @@ jobs:
 
       - name: Install and Build 🔧 
         run: |
-          yarn --version
           yarn install
           yarn build
+          pwd
+          ls
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
