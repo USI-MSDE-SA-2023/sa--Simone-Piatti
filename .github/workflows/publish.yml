@@ -13,12 +13,8 @@ jobs:
         run: |
           yarn install
           yarn build
-          cd upload
-          cd sa
-          pwd
-          ls
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: uplaod/sa/model
+          folder: upload/sa/model
