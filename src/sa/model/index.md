@@ -255,7 +255,8 @@ Source -> [System] : "Delete operation \n to minimize the impact of errors"
 
 Why Usability and not Performance?
 
-Undo is a great usability feature to recover from mistakes. The 2 second constraint however makes the scenario also relevant for performance.
+Undo is a great usability feature to recover from mistakes. The 2 second constraint however makes the scenario also
+relevant for performance.
 
 }
 
@@ -295,7 +296,6 @@ Also, performance was already modeled before in the first scenario.
 
 }
 
-
 ## Sixth Scenario
 
 Quality: _Testability_
@@ -332,7 +332,6 @@ Environment inconsistent with the scenario text (copy paste?)
 Stimulus could be clarified with "test" or "run test" or "check"
 
 }
-
 
 ## Seventh Scenario
 
@@ -575,16 +574,19 @@ Exceed: >6 components (>1 decomposed) and >2 use case/process view
 ## Process Views
 
 ### Use Case #1:
+
 A user use the phone camera to scan a barcode and load/unload the corresponding product.
 
 ![Process View: Use phone camera to scan barcode and load/unload the corresponding product](./view/process_1.puml)
 
-### Use Case #2: 
+### Use Case #2:
+
 A user use the desktop web application to scan a barcode and see the corresponding product information.
 
 ![Process View:  Use a barcode to see the corresponding product information](./view/process_2.puml)
 
-### Use Case #3: 
+### Use Case #3:
+
 A user use the desktop web application to update the product information from the name of the product.
 
 ![Process View: Update product information from its name](./view/process_3.puml)
@@ -616,17 +618,20 @@ Exceed: Redesign based on >3 reused components (1 Logical View, >1 Process View,
 ![Logical View](./view/logical.puml)
 
 ## Process View
+
 ### Use Case:
+
 Two user are connected to the system one using the desktop web interface and the other using the mobile application.
-The user using the desktop web application use use a barcode to load/unload the corresponding product. 
-The user using the mobile application need to see the list of the done operations updated automatically when a new operation is done.
+The user using the desktop web application use use a barcode to load/unload the corresponding product.
+The user using the mobile application need to see the list of the done operations updated automatically when a new
+operation is done.
 ![Process View: Use phone camera to scan barcode and load/unload the corresponding product](./view/process_4.puml)
 
 ### ADR
+
 ![](./decisions/decision4.madr)
 
-
-# Ex - Interface/API Specification 
+# Ex - Interface/API Specification
 
 {.instructions
 
@@ -689,7 +694,6 @@ Exceed: introduce a new type of connector and update your existing process view
 ![Connector View Diagram](./view/connector.c5)
 ![ADR](./decisions/decision5.madr)
 
-
 # Ex - Adapters and Coupling
 
 {.instructions
@@ -738,6 +742,38 @@ Exceed: 1-7 (with at least two adapters)
   the ones that you think are relevant for your design and by answering them you can get ideas on how to do question 6.
 
 }
+
+![Logical View with adapters](./view/logical_adapters.puml)
+
+## Solved mismatches
+
+##### **Operation granularity**
+
+The three databases connectors play the role of adapters between the "operation handler" and the three databases because
+the "operation handler" can not talk directly to the MongoDB databases.
+This adapters is also necessary because the "operation handler" need to do some complicated operation on the databases
+that imply to make a lot of call to the databases and it may cause some problems to the final users.
+
+![Logical View with wrapper](./view/logical_wrapper.puml)
+
+## Standard interfaces
+
+The standard interfaces that are used in this system are:
+
+- HTTP/HTTPS for the communication between the _two web interfaces_ and the _express server_
+- SQL for the communication between the databases wrapper and the three databases
+- JSON object to communicate between the express server and the operation handler and also between the operation handler
+  and the databases wrapper
+
+## Coupling
+
+In this part we will analyze the coupling n between the two web interfaces (_mobile web interface_ and _desktop web
+interface_ ) and the _express server_.
+The components doesn't share a state since in each request done to the _express server_ all the data needed are passed.
+The components are coupled by the **interaction** and **timing** facet because they need to communicate with each other
+to exchange the data for the operation that the user need to do and they need to be available at the same time.
+Since the system is a web based application the Interface/API of the express server and the platform on which it run can
+changed without affecting the two web interfaces.
 
 # Ex - Physical and Deployment Views
 
