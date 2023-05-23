@@ -13,8 +13,9 @@ jobs:
         run: |
           yarn install
           yarn build
-          pwd
           cd upload
+          cd sa
+          pwd
           ls
 
       - name: Deploy 🚀
