@@ -11,7 +11,7 @@ jobs:
 
       - name: Install and Build 🔧 
         run: |
-          apt install graphviz
+          sudo apt install graphviz
           yarn install
           yarn build
 
