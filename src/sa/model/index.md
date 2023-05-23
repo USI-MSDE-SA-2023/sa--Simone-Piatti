@@ -811,7 +811,7 @@ Exceed: 1 physical view, 1 deployment view, 1 ADR (b.) + 1 demo (c.)
 ![Deployment View](./view/deployment.puml)
 ![ADR](./decisions/decision_deployment_strategy.madr)
 
-GITHUB TEST 2
+GITHUB TEST 3
 
 # Ex - Availability and Services
 
