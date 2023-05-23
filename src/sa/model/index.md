@@ -807,6 +807,10 @@ Exceed: 1 physical view, 1 deployment view, 1 ADR (b.) + 1 demo (c.)
 
 }
 
+![Physical View](./view/physical.puml)
+![Deployment View](./view/deployment.puml)
+![ADR](./decisions/decision_deployment_strategy.madr)
+
 # Ex - Availability and Services
 
 {.instructions

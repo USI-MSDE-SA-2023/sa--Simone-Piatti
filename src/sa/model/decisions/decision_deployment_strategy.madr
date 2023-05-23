@@ -1,0 +1,21 @@
+## ADR : Deployment strategy
+
+1. What did you decide?
+Use a blue/green deployment strategy to deploy the application.
+
+2. What was the context for your decision?
+It's necessary to select a deployment strategy to deploy the application.
+
+3.  Which alternative options did you consider?
+* big bang
+* blue/green
+* pilot
+* gradual phase-in
+* canary
+* A/B testing
+
+4. Which one did you choose?
+The blue/green deployment strategy.
+
+5. What is the main reason for that?
+We want to deploy the application without downtime and with the possibility to rollback to the previous version if needed to avoid data corruption or inconsistency.
