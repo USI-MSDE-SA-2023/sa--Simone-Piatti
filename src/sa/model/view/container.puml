@@ -3,7 +3,7 @@ skinparam componentStyle rectangle
 
 !include <tupadr3/font-awesome/database>
 
-title Physical View
+title Container View
 
 
 component "Client device" as CL{
