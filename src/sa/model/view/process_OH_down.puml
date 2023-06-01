@@ -1,0 +1,41 @@
+@startuml
+title Process View
+
+participant "Desktop Web interface" as DWI
+participant "html5-qrcode <external>" as QR
+participant "Mobile Web interface" as MWI
+participant "Watchdog" as WD
+participant "Express server" as ES
+participant "Operation handler" as OH
+participant "Barcodes database" as BDB
+participant "Products database " as PDB
+participant "Transactions database " as TDB
+
+
+
+
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Courier
+
+
+WD -> ES: Test loading
+create OH
+ES -> OH: Load operation
+activate OH
+OH --> ES: operation failed
+destroy OH
+
+ES -> OH ** : create new "Operation handler"
+ES -> OH: Repeat load operation
+activate OH
+OH -> PDB: do operation
+PDB -> OH: operation done
+OH -> ES: return operation result
+deactivate OH
+ES -> WD: operation done
+
+
+
+
+@enduml

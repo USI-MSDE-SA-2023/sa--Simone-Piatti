@@ -1,0 +1,50 @@
+@startuml
+skinparam componentStyle rectangle
+
+!include <tupadr3/font-awesome/database>
+
+title Updated Deployment View
+
+
+node "Mobile Phone" {
+ [html5-qrcode <external>] as QR
+ [Mobile web interface] as MWI
+
+}
+
+node "Desktop" {
+ [Desktop web interface] as DWI
+}
+
+cloud "Cloud" {
+ database "Database" {
+   component [Product DB  <$database{scale=0.33}>] as PDB
+   component [Transaction DB  <$database{scale=0.33}>] as TDB
+   component [Barcode DB  <$database{scale=0.33}>] as BDB
+
+   BDB -right- PDB
+   TDB -left- PDB
+}
+[Express Server] as ES
+ [Operation handler] as OH
+}
+
+
+
+
+OH -up- PDB
+OH -up- TDB
+OH -up- BDB
+
+ES - OH
+ES -down- MWI : HTTP/HTTPS
+ES -down- DWI : HTTP/HTTPS
+
+MWI - QR
+
+
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Courier
+
+@enduml

@@ -1,0 +1,22 @@
+## ADR : Monitor strategy
+
+1. What did you decide?
+
+Use a watchdog to monitor the availability
+
+2. What was the context for your decision?
+
+It's necessary to select a monitor strategy to check the availability of the service.
+
+3.  Which alternative options did you consider?
+
+* watchdog
+* heartbeat
+
+4. Which one did you choose?
+
+A watchdog strategy.
+
+5. What is the main reason for that?
+
+The watchdog can be used to also monitor if each part of the service is working correctly and also measure the response time to check if it is necessary to improve the server capacity to keep the availability.

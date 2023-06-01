@@ -845,6 +845,54 @@ Exceed: 1, 2, 3, 4, 5, 6, 7, 8
 
 }
 
+## 1
+
+![Updated Deployment View](./view/deployment_2.puml)
+
+## 2
+
+The pricing model I have decide to use is based on the amount of products that user wants to store in the remote
+databases and also the number of clients he wants to use simultaneously:
+
+- Base plan : 100 products, 5 simultaneous clients == 0.99 CHF/month
+- Pro plan : 500 products, 20 simultaneous clients == 2.99 CHF/month
+- Full plan : 1000 products, 100 simultaneous clients == 4.99 CHF/month
+
+I have also think a plan for big business that wil change the price based on the number of connected clients and number
+of product stored
+
+- Business plan: 9.99 fixed + 0.19 * new client + 0.09 * product for each month
+
+## 3
+
+The system must be always available during working time so the planned downtimes must be during the night time for less
+than 3 hours and the longest response time tolerated by your clients, during day time, must be less than 1 hour.
+
+## 4
+
+![Updated Deployment View](./view/deployment_watchdog.puml)
+![ADR](./decisions/decision_monitor_strategy.madr)
+
+## 5
+
+Operation handler goes down
+![Sequence diagram](./view/process_OH_down.puml)
+
+## 6
+
+## 7
+
+Since I have opted to use a watchdog I can use it to prevent overloaded servers using the response time for some types
+of request and so limit the probability of cascading failures.
+Other way to limit cascading failure is to create a new operation handler dedicated for users that will have a high
+number of concurrent clients since they can generate a high number of request and so they will be divided on the
+different handler
+
+## 8
+
+The only external dependency of this system is "html5-qrcode" which will always be available as it runs locally in the
+user's mobile phone.
+
 # Ex - Flexibility
 
 {.instructions
