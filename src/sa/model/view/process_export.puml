@@ -1,0 +1,30 @@
+@startuml
+title Process View
+
+participant "html5-qrcode <external>" as QR
+participant "Mobile Web interface" as MWI
+participant "Watchdog" as WD
+participant "Desktop Web interface" as DWI
+participant "Express server" as ES
+participant "Operation handler" as OH
+participant "Products database" as PDB
+participant "Transactions database " as TDB
+participant "Barcodes database" as BDB
+
+
+
+
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Courier
+
+DWI -> ES : Request export to file of the warehouse state
+ES -> OH: Request export to file of the warehouse state
+OH -> PDB: Request product list with all the data stored in the database
+PDB -> OH: Return product list with all the data
+OH -> OH: Generate file with the product list and all the data of each product
+OH -> ES: Return the generated file
+ES -> DWI: Send the generated file
+DWI -> DWI: Start downloading the file
+
+@enduml

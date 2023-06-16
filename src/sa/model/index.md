@@ -925,3 +925,31 @@ Good: 1, two out of 2-5.
 Exceed: 1-5.
 
 }
+
+## 1
+
+### Use Case:
+
+A user wants to have the statistics of the movements of the products in the warehouse.
+
+![Process View](./view/process_new_feature.puml)
+
+![Logical View](./view/logical_new_feature.puml)
+
+![Deployment View](./view/deployment_new_feature.puml)
+
+## 2
+
+### Use Case:
+
+The user wants to export the current state of the warehouse in a file.
+
+![Process View](./view/process_export.puml)
+
+![Logical View](./view/logical_with_interfaces_export.puml)
+
+## 3
+
+## 4
+
+## 5

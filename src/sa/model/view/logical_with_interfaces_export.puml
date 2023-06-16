@@ -1,0 +1,116 @@
+@startuml
+
+title Logical View
+
+[html5-qrcode <external>] as QR
+interface " " as QRI
+QR - QRI
+
+component Database {
+   component [Product DB  <$database{scale=0.33}>] as PDB
+   component [Barcode DB  <$database{scale=0.33}>] as BDB
+   component [Transaction DB  <$database{scale=0.33}>] as TDB
+   BDB -(0- PDB
+   TDB -(0- PDB
+}
+interface " " as PDBI
+PDB - PDBI
+interface " " as BDBI
+BDB -- BDBI
+interface " " as TDBI
+TDB -- TDBI
+
+
+[Desktop web interface] as DWI
+[Mobile web interface] as MWI
+[Operation handler] as OH
+interface " " as OHI
+OH -- OHI
+
+[Express Server] as ES
+interface " " as ESI
+ES -- ESI
+
+PDBI )- OH
+BDBI )-- OH
+TDBI )-- OH
+
+ES -( OHI
+
+ESI )- DWI
+
+MWI -( ESI
+QRI )- MWI
+
+
+note bottom of QRI
+operations:
+..
+start(camera, config, callback)
+stop()
+end note
+
+note bottom of ESI
+operations:
+..
+POST(...)
+GET(...)
+DELETE(...)
+--
+events:
+..
+started
+disconnected
+update_transaction
+item_updated
+new_item
+end note
+
+note right of OHI
+operations:
+..
+load(code)
+load(itemName)
+unload(code)
+unload(itemName)
+getInfo(itemId)
+delete(codeId)
+delete(itemId)
+addItem(Name, Position, Description, MinThr, Quantity, Weight)
+updateItem(itemId, Name, Position, Description, MinThr, Quantity, Weight)
+**exportStatus()**
+end note
+
+note left of PDBI
+operations:
+..
+insertOne()
+find()
+findOne()
+findOneAndUpdate()
+
+end note
+
+note left of BDBI
+operations:
+..
+insertMany()
+deleteOne()
+find()
+end note
+
+note left of TDBI
+operations:
+..
+insertOne()
+find()
+findOne()
+deleteOne()
+
+end note
+
+
+
+skinparam monochrome true
+skinparam shadowing false
+@enduml
